@@ -24,6 +24,12 @@ UNIT_NAME_TRANSLATIONS = {
     'Celsius': 'celsius',
     'revolutions_per_minute': 'rpm',
     'v': 'volt',
+    'arcdegree': 'degree',
+    'degrees_north': 'degN',
+    'degrees_east': 'degE',
+    'degrees_west': 'degW',
+    'degrees_true': 'degT',
+    'circular_mil': 'cmil',
 }
 
 
@@ -46,7 +52,7 @@ def _dimensionality_to_siunitx(dim):
             # Split unitname into prefix and actual name if possible
             if unit.name.startswith(prefix):
                 substring += '\\' + prefix
-                name = unit.name[len(prefix)]
+                name = unit.name[len(prefix):]
                 break
         else:
             # Otherwise simply use the full name
@@ -70,7 +76,15 @@ class Quantity(Command):
     """A class representing quantities."""
 
     packages = [Package('siunitx'),
-                NoEscape('\\DeclareSIUnit\\rpm{rpm}')]
+                NoEscape('\\DeclareSIUnit\\rpm{rpm}'),
+                NoEscape('\\DeclareSIUnit\\degN{\\degree N}'),
+                NoEscape('\\DeclareSIUnit\\degE{\\degree E}'),
+                NoEscape('\\DeclareSIUnit\\degW{\\degree W}'),
+                NoEscape('\\DeclareSIUnit\\degT{\\degree T}'),
+                NoEscape('\\DeclareSIUnit\\are{a}'),
+                NoEscape('\\DeclareSIUnit\\cmil{cmil}'),
+                NoEscape('\\DeclareSIUnit\\darcy{D}'),
+                NoEscape('\\DeclareSIUnit\\acre{ac}')]
 
     def __init__(self, quantity, *, options=None, format_cb=None):
         r"""
