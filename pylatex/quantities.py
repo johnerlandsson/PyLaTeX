@@ -23,13 +23,14 @@ from .utils import NoEscape, escape_latex
 UNIT_NAME_TRANSLATIONS = {
     'Celsius': 'celsius',
     'revolutions_per_minute': 'rpm',
-    'v': 'volt',
     'arcdegree': 'degree',
     'degrees_north': 'degN',
     'degrees_east': 'degE',
     'degrees_west': 'degW',
     'degrees_true': 'degT',
     'circular_mil': 'cmil',
+    'ampere_turn': 'ampereturn',
+    'elementary_charge': 'elementarycharge',
 }
 
 
@@ -76,6 +77,7 @@ class Quantity(Command):
     """A class representing quantities."""
 
     packages = [Package('siunitx'),
+                Package('amssymb'),
                 NoEscape('\\DeclareSIUnit\\rpm{rpm}'),
                 NoEscape('\\DeclareSIUnit\\degN{\\degree N}'),
                 NoEscape('\\DeclareSIUnit\\degE{\\degree E}'),
@@ -84,7 +86,28 @@ class Quantity(Command):
                 NoEscape('\\DeclareSIUnit\\are{a}'),
                 NoEscape('\\DeclareSIUnit\\cmil{cmil}'),
                 NoEscape('\\DeclareSIUnit\\darcy{D}'),
-                NoEscape('\\DeclareSIUnit\\acre{ac}')]
+                NoEscape('\\DeclareSIUnit\\acre{ac}'),
+                NoEscape('\\DeclareSIUnit\\abampere{aA}'),
+                NoEscape('\\DeclareSIUnit\\statcoulomb{esu}'),
+                NoEscape('\\DeclareSIUnit\\ampereturn{AT}'),
+                NoEscape('\\DeclareSIUnit\\gilbert{Gb}'),
+                NoEscape('\\DeclareSIUnit\\abfarad{ab\\farad}'),
+                NoEscape('\\DeclareSIUnit\\abhenry{ab\\henry}'),
+                NoEscape('\\DeclareSIUnit\\absiemens{ab\\siemens}'),
+                NoEscape('\\DeclareSIUnit\\abmho{ab\\mho}'),
+                NoEscape('\\DeclareSIUnit\\abohm{ab\\ohm}'),
+                NoEscape('\\DeclareSIUnit\\abvolt{ab\\volt}'),
+                NoEscape('\\DeclareSIUnit\\elementarycharge{\\textit{e}}'),
+                NoEscape('\\DeclareSIUnit\\faraday{\\textit{F}}'),
+                NoEscape('\\DeclareSIUnit\\gauss{G}'),
+                NoEscape('\\DeclareSIUnit\\maxwell{Mx}'),
+                NoEscape('\\DeclareSIUnit\\oersted{Oe}'),
+                NoEscape('\\DeclareSIUnit\\statfarad{stat\\farad}'),
+                NoEscape('\\DeclareSIUnit\\stathenry{stat\\henry}'),
+                NoEscape('\\DeclareSIUnit\\statmho{stat\\mho}'),
+                NoEscape('\\DeclareSIUnit\\statohm{stat\\ohm}'),
+                NoEscape('\\DeclareSIUnit\\statvolt{stat\\volt}')]
+        
 
     def __init__(self, quantity, *, options=None, format_cb=None):
         r"""
