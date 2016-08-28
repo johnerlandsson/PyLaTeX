@@ -31,6 +31,12 @@ UNIT_NAME_TRANSLATIONS = {
     'circular_mil': 'cmil',
     'ampere_turn': 'ampereturn',
     'elementary_charge': 'elementarycharge',
+    'British_thermal_unit': 'btu',
+    'electron_volt': 'electronvolt',
+    'EC_therm': 'thm',
+    'thermochemical_calorie': 'thermochemicalCalorie',
+    'US_therm': 'thm',
+    'watt_hour': 'wH',
 }
 
 
@@ -106,7 +112,12 @@ class Quantity(Command):
                 NoEscape('\\DeclareSIUnit\\stathenry{stat\\henry}'),
                 NoEscape('\\DeclareSIUnit\\statmho{stat\\mho}'),
                 NoEscape('\\DeclareSIUnit\\statohm{stat\\ohm}'),
-                NoEscape('\\DeclareSIUnit\\statvolt{stat\\volt}')]
+                NoEscape('\\DeclareSIUnit\\statvolt{stat\\volt}'),
+                NoEscape('\\DeclareSIUnit\\erg{erg}'),
+                NoEscape('\\DeclareSIUnit\\btu{BTU}'),
+                NoEscape('\\DeclareSIUnit\\thm{thm}'),
+                NoEscape('\\DeclareSIUnit\\thermochemicalCalorie{\\ensuremath{cal_{th}}}'),
+                NoEscape('\\DeclareSIUnit\\wH{\\watt\\hour}')]
         
 
     def __init__(self, quantity, *, options=None, format_cb=None):
